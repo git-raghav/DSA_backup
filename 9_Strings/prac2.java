@@ -1,4 +1,3 @@
-
 // Write a program to check whether two strings are anagram or not.
 // An anagram of a string is another string that contains the same characters, only the order of characters can be different.
 // For example, “act” and “cat” are an anagram of each other.

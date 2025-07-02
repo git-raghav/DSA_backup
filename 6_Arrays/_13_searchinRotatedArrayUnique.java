@@ -10,7 +10,7 @@ public class _13_searchinRotatedArrayUnique {
                 return mid;
             }
             // left part sorted
-            if (arr[low] < arr[mid]) {
+            if (arr[low] <= arr[mid]) {
                 if (key >= arr[low] && key < arr[mid]) {
                     high = mid - 1;
                 } else {

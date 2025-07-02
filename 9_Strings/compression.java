@@ -16,7 +16,7 @@ public class compression {
     }
 
     public static void main(String[] args) {
-        String str = "abc";
+        String str = "aaabbcccdd";
         System.out.println(compress(str));
     }
 }
