@@ -6,22 +6,22 @@ public class _5_inversionCount {
         System.out.println();
     }
 
-    public static int mergeSort(int arr[], int start, int end) {
-        if (start >= end) return 0;
+    static int invCount = 0;
+
+    public static void mergeSort(int arr[], int start, int end) {
+        if (start >= end) return;
 
         int mid = start + (end - start) / 2;
-        int leftInvCount = mergeSort(arr, start, mid); // Count inversions in left half
-        int rightInvCount = mergeSort(arr, mid + 1, end); // Count inversions in right half
-        int invCount = merge(arr, start, mid, end); // Count inversions while merging left and right halves
-        return leftInvCount + rightInvCount + invCount;
+        mergeSort(arr, start, mid);
+        mergeSort(arr, mid + 1, end);
+        merge(arr, start, mid, end);
     }
 
-    public static int merge(int arr[], int start, int mid, int end) {
+    public static void merge(int arr[], int start, int mid, int end) {
         int temp[] = new int[end-start+1];
         int i = start;
         int j = mid+1;
         int k = 0;
-        int invCount = 0; //inversion
 
         while (i <= mid && j <= end) {
             if (arr[i] < arr[j]) {
@@ -47,12 +47,12 @@ public class _5_inversionCount {
         for(k=0, i=start; k < temp.length; k++, i++){
             arr[i] = temp[k];
         }
-        return invCount;
     }
 
     public static void main(String[] args) {
         int arr[] = { 2,4,1,3,5 };
-        System.out.println(mergeSort(arr, 0, arr.length - 1));
+        mergeSort(arr, 0, arr.length - 1);
+        System.out.println("Inversion count = " + invCount);
         printArray(arr);
     }
 }
