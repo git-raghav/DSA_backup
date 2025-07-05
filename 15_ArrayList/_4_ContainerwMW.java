@@ -1,4 +1,3 @@
-// Container With Most Water
 import java.util.ArrayList;
 
 public class _4_ContainerwMW {
@@ -6,7 +5,7 @@ public class _4_ContainerwMW {
     // Brute Force Approach O(n^2)
     public static int maxWaterBrute(ArrayList<Integer> height) {
         int max = Integer.MIN_VALUE;
-        for (int i = 0; i < height.size() - 1; i++) {
+        for (int i = 0; i < height.size() - 1; i++) { // try all pairs of heights
             for (int j = i + 1; j < height.size(); j++) {
                 int currWater = Math.min(height.get(i), height.get(j)) * (j - i);// height * width
                 max = Math.max(max, currWater);
@@ -20,13 +19,12 @@ public class _4_ContainerwMW {
         int max = Integer.MIN_VALUE;
         int lp = 0;
         int rp = height.size() - 1;
-
         while (lp < rp) {
-            // calculate water area
+            // calculate water
             int currWater = Math.min(height.get(lp), height.get(rp)) * (rp - lp);// height * width
             max = Math.max(max, currWater);
 
-            // update pointers
+            // update pointer
             if (height.get(lp) < height.get(rp)) {
                 lp++;
             } else {
