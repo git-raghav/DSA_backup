@@ -34,3 +34,4 @@ public class _13_searchinRotatedArrayUnique {
         System.out.println(search(arr, key));
     }
 }
+//O(nlogn)

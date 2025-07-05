@@ -17,3 +17,4 @@ public class _12_distinctArray {
         System.out.println(distinct(arr));
     }
 }
+//O(n^2)

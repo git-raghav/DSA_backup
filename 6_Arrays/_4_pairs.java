@@ -16,3 +16,4 @@ public class _4_pairs {
         pair(arr);
     }
 }
+//O(n^2)

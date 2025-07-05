@@ -21,3 +21,4 @@ public class _1_linearSearch {
         return -1;
     }
 }
+// time complexity - O(n)

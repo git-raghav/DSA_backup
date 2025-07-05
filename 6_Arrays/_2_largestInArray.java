@@ -8,7 +8,7 @@ public class _2_largestInArray {
     }
 
     public static int largest(int numbers[]) {
-        int max = Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE; //java utility package
         for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] > max) {
                 max = numbers[i];
@@ -27,3 +27,4 @@ public class _2_largestInArray {
         return min;
     }
 }
+//O(n)

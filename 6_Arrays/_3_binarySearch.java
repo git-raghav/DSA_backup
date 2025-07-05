@@ -16,7 +16,7 @@ public class _3_binarySearch {
         int low = 0;
         int high = numbers.length - 1;
         while (low <= high) {
-            int mid = (low + high) / 2;
+            int mid = low + (high - low) / 2; //no overflow
             if (numbers[mid] == key) {
                 return mid;
             } else if (key < numbers[mid]) {
@@ -28,3 +28,4 @@ public class _3_binarySearch {
         return -1;
     }
 }
+//O(logn)
