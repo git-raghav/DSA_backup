@@ -19,23 +19,22 @@ public class _6_pairSum_2 {
     // 2 Pointer Approach O(n)
     public static boolean pairSumPointer(ArrayList<Integer> list, int target) {
         int pivot = -1;
-        for (int i = 0; i < list.size() - 1; i++) {
-            // sab sorted hai but ek point jaha p rotated hogi vha unsorted hoga
-            if (list.get(i) > list.get(i + 1)) {
+        int n = list.size();
+        for (int i = 0; i < n - 1; i++) {
+            if (list.get(i) > list.get(i + 1)) { // finding array breaking point
                 pivot = i;
                 break;
             }
         }
-
-        int lp = pivot + 1;// smallest
-        int rp = pivot;// largest
+        int lp = pivot + 1;// will point the smallest element
+        int rp = pivot;// will point the largets element
         while (lp != rp) {
             if (list.get(lp) + list.get(rp) == target) {
                 return true;
             } else if (list.get(lp) + list.get(rp) < target) {
-                lp = (lp + 1) % list.size();
+                lp = (lp + 1) % n;
             } else {
-                rp = (list.size() + rp - 1) % list.size();
+                rp = (n + rp - 1) % n;
             }
         }
         return false;
@@ -49,7 +48,7 @@ public class _6_pairSum_2 {
         list.add(8);
         list.add(9);
         list.add(10);
-        int target = 160;
+        int target = 19;
 
         System.out.println(pairSumBrute(list, target));
         System.out.println(pairSumPointer(list, target));

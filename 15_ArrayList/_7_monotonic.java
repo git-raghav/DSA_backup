@@ -11,6 +11,7 @@ public class _7_monotonic {
             if (list.get(i) < list.get(i+1)) {
                 dec = false;
             }
+            if(inc == false && dec == false) return false; // if both becomes false directly return no need to check further
         }
         return inc || dec;
     }
