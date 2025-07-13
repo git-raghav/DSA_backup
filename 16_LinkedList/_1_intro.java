@@ -7,7 +7,6 @@ public class _1_intro {
             this.data = data;
             this.next = null;
         }
-
     }
 
     public static Node head;
@@ -118,10 +117,9 @@ public class _1_intro {
         System.out.println(ll.size);
         ll.removeFirst();
         ll.print();
-        System.out.println(ll.size);
-        System.out.println(ll.removeLast());
-        ll.print();
-        System.out.println(ll.size);
-
+        // System.out.println(ll.size);
+        // System.out.println(ll.removeLast());
+        // ll.print();
+        // System.out.println(ll.size);
     }
 }

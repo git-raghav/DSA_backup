@@ -48,12 +48,13 @@ public class _3_reverse {
     public void rev() {
         Node prev = null;
         Node curr = head;
-        tail = curr;
         Node next;
+        tail = head;
 
-        while (curr != null) {
-            next = curr.next;
-            curr.next = prev;
+        while(curr != null){
+            next = curr.next;//saving link
+            curr.next = prev;// reversing link
+            //updation
             prev = curr;
             curr = next;
         }
@@ -71,6 +72,5 @@ public class _3_reverse {
         ll.print();
         ll.rev();
         ll.print();
-
     }
 }

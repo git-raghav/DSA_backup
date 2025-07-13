@@ -7,7 +7,6 @@ public class _4_nthNodeFromEnd {
             this.data = data;
             this.next = null;
         }
-
     }
 
     public static Node head;
@@ -46,17 +45,14 @@ public class _4_nthNodeFromEnd {
     // using iterative method
     //O(n)
     public void remove(int n) {
-        //size calculate krlo traverse krke i++ krke yaa fir size variable
-        if (head == null) {
-            System.out.println("linked list empty");
-            return;
-        } else if (n == size) {
-            head = head.next;
+        //size calculate krlo traverse krke yaa fir size variable
+        if(n == size){
+            head = head.next; //remove first opn
             return;
         }
         Node prev = head;
         int i = 1;
-        while (i < size-n) {
+        while(i < size-n){
             prev = prev.next;
             i++;
         }
@@ -75,6 +71,5 @@ public class _4_nthNodeFromEnd {
         ll.print();
         ll.remove(3);
         ll.print();
-
     }
 }

@@ -1,3 +1,5 @@
+import org.w3c.dom.Node;
+
 public class _5_palindrome {
     public static class Node {
         int data;
@@ -7,7 +9,6 @@ public class _5_palindrome {
             this.data = data;
             this.next = null;
         }
-
     }
 
     public static Node head;
@@ -48,11 +49,11 @@ public class _5_palindrome {
         Node slow = head;
         Node fast = head;
 
-        while (fast != null && fast.next != null) {
-            slow = slow.next;// +1
-            fast = fast.next.next;// +2
+        while(fast != null && fast.next != null){
+            slow = slow.next; //+1
+            fast = fast.next.next; //+2
         }
-        return slow; // slow is the middle node of ll
+        return slow; //slow is at the middle node
     }
 
     public boolean check() {
@@ -67,24 +68,21 @@ public class _5_palindrome {
         // step 2- reverse 2nd half
         Node prev = null;
         Node curr = midNode;
-        Node next;
 
         while (curr != null) {
-            next = curr.next;
+            Node next = curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
         }
-        Node right = prev; // right half head
-        Node left = head; // left half head
+        Node right = prev; //right head
+        Node left = head; //left head
 
         // step 3- check both halves
         while (right != null) {
-            if (left.data != right.data) {
-                return false;
-            }
-            right = right.next;
+            if(left.data != right.data) return false;
             left = left.next;
+            right = right.next;
         }
         return true;
     }

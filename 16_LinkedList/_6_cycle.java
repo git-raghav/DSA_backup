@@ -1,3 +1,5 @@
+import org.w3c.dom.Node;
+
 public class _6_cycle {
     public static class Node {
         int data;
@@ -7,7 +9,6 @@ public class _6_cycle {
             this.data = data;
             this.next = null;
         }
-
     }
 
     public static Node head;
@@ -44,45 +45,58 @@ public class _6_cycle {
     }
 
     public boolean check() {
-        Node fast = head;
+        // edge case
+        if (head == null || head.next == null) return false;
+
         Node slow = head;
+        Node fast = head;
         while (fast != null && fast.next != null) {
-            fast = fast.next.next;
             slow = slow.next;
-            if (fast == slow) {
-                return true;
-            }
+            fast = fast.next.next;
+            if (slow == fast) return true;
         }
         return false;
     }
 
     public void removeCycle() {
-        //detect cycle(normal old code)
-        Node fast = head;
+        if (head == null || head.next == null) return; // edge case
+
+        // detect cycle
         Node slow = head;
+        Node fast = head;
         boolean cycle = false;
         while (fast != null && fast.next != null) {
-            fast = fast.next.next;
             slow = slow.next;
-            if (fast == slow) {
+            fast = fast.next.next;
+            if (slow == fast) {
                 cycle = true;
                 break;
             }
         }
-        if (cycle == false) {
+        if (cycle == false) return;
+
+        // find meeting point
+        slow = head;
+
+        // Edge case: cycle starts at head
+        if (slow == fast) {
+            // Move fast until its next is slow (i.e., end of cycle)
+            while (fast.next != slow) {
+                fast = fast.next;
+            }
+            fast.next = null; // break the cycle
             return;
         }
 
-        //find meeting point
-        slow = head;
+        // general case
         Node prev = null;
-        while(slow != fast){
+        while (slow != fast) {
+            slow = slow.next; // 1 step
             prev = fast;
-            slow = slow.next;
-            fast = fast.next;
+            fast = fast.next; // 1 step
         }
 
-        //remove cycle
+        // remove cycle
         prev.next = null;
     }
 
@@ -94,8 +108,8 @@ public class _6_cycle {
         ll.addLast(5);
         ll.addLast(5);
         ll.addLast(5);
-        tail.next = head.next;
-
+        // tail.next = head.next;
+        tail.next = head;
 
         System.out.println(ll.check());
         ll.removeCycle();

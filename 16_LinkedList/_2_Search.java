@@ -7,7 +7,6 @@ public class _2_Search {
             this.data = data;
             this.next = null;
         }
-
     }
 
     public static Node head;
@@ -47,8 +46,8 @@ public class _2_Search {
     public int itrSearch(int key) {
         int i = 0;
         Node temp = head;
-        while (temp != null) {
-            if (temp.data == key) {
+        while(temp != null){
+            if(temp.data == key){
                 return i;
             }
             temp = temp.next;
@@ -58,9 +57,14 @@ public class _2_Search {
     }
 
     //using recursive method
-    public int recSearch(int key) {
+    public int recSearch(Node head, int key) {
+        //base cases
+        if(head == null) return -1;
+        if(head.data == key) return 0;
 
-        return -1;
+        int idx = recSearch(head.next, key); // recursive part
+        if(idx == -1) return -1;
+        return idx+1;
     }
 
     public static void main(String[] args) {
@@ -70,10 +74,8 @@ public class _2_Search {
         ll.addLast(3);
         ll.addLast(4);
         ll.addLast(5);
-
         ll.print();
         System.out.println("Element found at " + ll.itrSearch(3));
-        System.out.println("Element found at " + ll.recSearch(3));
-
+        System.out.println("Element found at " + ll.recSearch(head, 3));
     }
 }
