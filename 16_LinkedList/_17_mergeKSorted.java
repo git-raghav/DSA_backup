@@ -1,51 +1,27 @@
-public class _17_mergeKSorted {
-    public static class Node {
-        int data;
-        Node next;
-
-        public Node(int data) {
-            this.data = data;
-            this.next = null;
-        }
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        if(lists.length == 0) return null;
+        return mergeSort(lists, 0, lists.length-1);
     }
 
-    public Node head;
-    public Node tail;
-    public int size;
-
-    public void addLast(int data) {
-        Node newNode = new Node(data);
-        if (head == null) {
-            head = tail = newNode;
-        } else {
-            tail.next = newNode;
-            tail = newNode;
-        }
-        size++;
+    //assume array of heads and not array of linked list
+    public ListNode mergeSort(ListNode[] lists, int start, int end) {
+        if(start == end) return lists[start]; //only one linked list remains or one head
+        int mid = start + (end - start) / 2;
+        ListNode left = mergeSort(lists, start, mid);
+        ListNode right = mergeSort(lists, mid + 1, end);
+        return merge(left, right);
     }
 
-    public void print() {
-        if (head == null) {
-            System.out.println("List is empty");
-            return;
-        }
+    //merge 2 sorted list code
+    public ListNode merge(ListNode list1, ListNode list2) {
+        //initialization
+        ListNode mergedList = new ListNode(-1);
+        ListNode temp = mergedList;
 
-        Node temp = head;
-        while (temp != null) {
-            System.out.print(temp.data + " -> ");
-            temp = temp.next;
-        }
-        System.out.println("null");
-    }
-
-    public static Node merge(Node list1, Node list2) {
-        // initialization
-        Node mergedList = new Node(-1);
-        Node temp = mergedList;
-
-        // compare and merge
-        while (list1 != null && list2 != null) {
-            if (list1.data <= list2.data) {
+        //compare and merge
+        while(list1 != null && list2 != null){
+            if(list1.val <= list2.val){
                 temp.next = list1;
                 temp = temp.next;
                 list1 = list1.next;
@@ -56,13 +32,13 @@ public class _17_mergeKSorted {
             }
         }
 
-        // if any element remains
-        while (list1 != null) {
+        //if any element remains
+        while(list1 != null){
             temp.next = list1;
             temp = temp.next;
             list1 = list1.next;
         }
-        while (list2 != null) {
+        while(list2 != null){
             temp.next = list2;
             temp = temp.next;
             list2 = list2.next;
@@ -70,34 +46,5 @@ public class _17_mergeKSorted {
 
         return mergedList.next;
     }
-
-    public static void main(String[] args) {
-        _17_mergeKSorted ll1 = new _17_mergeKSorted();
-        _17_mergeKSorted ll2 = new _17_mergeKSorted();
-
-        ll1.addLast(1);
-        ll1.addLast(2);
-        ll1.addLast(4);
-
-        ll2.addLast(1);
-        ll2.addLast(3);
-        ll2.addLast(4);
-
-        System.out.print("List 1: ");
-        ll1.print();
-
-        System.out.print("List 2: ");
-        ll2.print();
-
-        // Merge and print the result
-        Node mergedHead = merge(ll1.head, ll2.head);
-
-        System.out.print("Merged List: ");
-        Node temp = mergedHead;
-        while (temp != null) {
-            System.out.print(temp.data + " -> ");
-            temp = temp.next;
-        }
-        System.out.println("null");
-    }
 }
+//dont run
