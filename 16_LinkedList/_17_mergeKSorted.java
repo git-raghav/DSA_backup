@@ -6,7 +6,7 @@ class Solution {
 
     //assume array of heads and not array of linked list
     public ListNode mergeSort(ListNode[] lists, int start, int end) {
-        if(start == end) return lists[start]; //only one linked list remains or one head
+        if(start == end) return lists[start]; //only one linked list remains or one head(base case)
         int mid = start + (end - start) / 2;
         ListNode left = mergeSort(lists, start, mid);
         ListNode right = mergeSort(lists, mid + 1, end);
