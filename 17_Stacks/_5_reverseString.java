@@ -1,18 +1,22 @@
 import java.util.*;
 public class _5_reverseString {
-    public static void pushB(Stack<Integer> stack, int data) {
-
+    public static String rev(String str) {
+        //push element in the stack
+        Stack<Character> stack = new Stack<>();
+        int idx = 0;
+        while(idx < str.length()){
+            stack.push(str.charAt(idx));
+            idx++;
+        }
+        //store element back as poping results in reverse order
+        StringBuilder sb = new StringBuilder();
+        while(!stack.isEmpty()){
+            sb.append(stack.pop());
+        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {
-        Stack<Character> stack = new Stack<Integer>();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        pushB(stack, 4);
-        while (!stack.isEmpty()) {
-            System.out.println(stack.peek());
-            stack.pop();
-        }
+        System.out.println(rev("abc"));
     }
 }
