@@ -20,12 +20,15 @@ public class _14_decodeString {
                 }
                 int number = Integer.parseInt(num.toString());//char num -> string -> int
 
-                //ab expand karo or vapis stack m push krdo
+                //ab expand karo
                 StringBuilder repeat = new StringBuilder();
                 for (int j = 0; j < number; j++) repeat.append(temp);
+
+                // vapis stack m push krdo
                 for (char c : repeat.toString().toCharArray()) stack.push(c);
             }
         }
+        //stack to string
         StringBuilder res = new StringBuilder();
         while (!stack.isEmpty()) {
             res.insert(0, stack.pop());
