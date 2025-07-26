@@ -18,3 +18,4 @@ public class _12_distinctArray {
     }
 }
 //O(n^2)
+//boolean array approach but O(n) space complexity and O(n) time complexity
