@@ -9,7 +9,7 @@ public class _14_decodeString {
                 //maal ikhatta karo[..]
                 StringBuilder temp = new StringBuilder();
                 while(!stack.isEmpty() && stack.peek() != '['){
-                    temp.insert(0, stack.pop());
+                    temp.insert(0, stack.pop()); //we can also use the append approach  str = stack.pop() + str; something like this
                 }
                 stack.pop();
 
