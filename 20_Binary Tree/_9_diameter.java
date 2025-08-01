@@ -1,4 +1,4 @@
-public class _6_height {
+public class _9_diameter {
     static class Node {
         int data;
         Node left;
@@ -11,11 +11,8 @@ public class _6_height {
         }
     }
 
-    public static int height(Node root) {
-        if(root == null) return 0; //base case, do -1 if you want edges as height
-        int left = height(root.left);
-        int right = height(root.right);
-        return Math.max(left, right) + 1; //+1 for root itself
+    public static int sum(Node root) {
+        
     }
 
     public static void main(String[] args) {
@@ -26,6 +23,6 @@ public class _6_height {
         root.left.right = new Node(5);
         root.right.left = new Node(6);
         root.right.right = new Node(7);
-        System.out.println(height(root));
+        System.out.println(sum(root));
     }
 }
