@@ -11,8 +11,21 @@ public class _9_diameter {
         }
     }
 
-    public static int sum(Node root) {
-        
+    static int max = 0;
+    public static int diam(Node root) {
+        findHeight(root);
+        return max; //for edges do -1
+    }
+    public static int findHeight(Node root) {
+        if(root == null) return 0;
+        int leftHeight = findHeight(root.left);
+        int rightHeight = findHeight(root.right);
+
+        // path through this node = left + right + 1
+        max = Math.max(max, leftHeight + rightHeight + 1);
+
+        // return height of this node
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 
     public static void main(String[] args) {
@@ -23,6 +36,6 @@ public class _9_diameter {
         root.left.right = new Node(5);
         root.right.left = new Node(6);
         root.right.right = new Node(7);
-        System.out.println(sum(root));
+        System.out.println(diam(root));
     }
 }
