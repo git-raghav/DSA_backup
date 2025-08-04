@@ -1,7 +1,7 @@
 import java.util.*;
 
 import org.w3c.dom.Node;
-public class populatingNextRightPointer {
+public class _15_populatingNextRightPointer {
     static class Node {
         int data;
         Node left;
