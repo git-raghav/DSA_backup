@@ -32,9 +32,15 @@ public class _18_minDistanceNodes {
     }
 
     public static int lcaDist(Node root, int n) {
-        if(root.data == n) return 0;
+        if(root == null) return -1; //base case, not found
+        if(root.data == n) return 0; //base case, found
+
         int leftDist = lcaDist(root.left, n);
         int rightDist = lcaDist(root.right, n);
+
+        if(leftDist == -1 && rightDist == -1) return -1;
+        else if (leftDist != -1) return leftDist + 1; //if left distance exist then add 1
+        else return rightDist + 1; //if right distance exist then add 1
     }
 
     public static void main(String[] args) {
@@ -45,6 +51,6 @@ public class _18_minDistanceNodes {
         root.left.right = new Node(5);
         root.right.left = new Node(6);
         root.right.right = new Node(7);
-        System.out.println(dist(root, 4, 6));
+        System.out.println(dist(root, 7, 6));
     }
 }
