@@ -24,7 +24,7 @@ public class _4_majorityElement {
     }
 
     public static void main(String[] args) {
-        int arr[] = {1,2,1};
+        int arr[] = {2,2,1,3,4,5};
         System.out.println(sortWay(arr));
         System.out.println(bayerMoore(arr));
     }

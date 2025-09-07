@@ -42,30 +42,31 @@ public class _13_deleteMafterN {
     }
 
     public void delete(int m, int n) {
-    Node current = head;
+        Node current = head;
 
-    while (current != null) {
-        //Step 1: Skip M nodes
-        for (int i = 1; i < m && current != null; i++) {
-            current = current.next;
+        while (current != null) {
+            // Step 1: Skip M nodes
+            for (int i = 1; i < m && current != null; i++) {
+                current = current.next;
+            }
+
+            // If we reached end while skipping M, break
+            if (current == null)
+                return;
+
+            // Step 2: Delete next N nodes
+            Node temp = current.next;
+            for (int i = 0; i < n && temp != null; i++) {
+                temp = temp.next;
+            }
+
+            // Step 3: Connect M-th node to (M+N+1)-th node
+            current.next = temp;
+
+            // Move current to next block of M
+            current = temp;
         }
-
-        //If we reached end while skipping M, break
-        if (current == null) return;
-
-        //Step 2: Delete next N nodes
-        Node temp = current.next;
-        for (int i = 0; i < n && temp != null; i++) {
-            temp = temp.next;
-        }
-
-        //Step 3: Connect M-th node to (M+N+1)-th node
-        current.next = temp;
-
-        //Move current to next block of M
-        current = temp;
     }
-}
 
     public static void main(String[] args) {
         _13_deleteMafterN ll = new _13_deleteMafterN();

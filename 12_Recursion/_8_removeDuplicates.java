@@ -5,7 +5,7 @@ public class _8_removeDuplicates {
             return;
         }
         char currChar = str.charAt(idx);
-        System.out.println("idx: " + idx + ", char: " + currChar + ", newStr: " + newStr);
+        // System.out.println("idx: " + idx + ", char: " + currChar + ", newStr: " + newStr);
         if(map[currChar-'a'] == true){ // Duplicate → skip this character
             check(str, idx+1, newStr, map);
         } else { // Not seen before → include this character
