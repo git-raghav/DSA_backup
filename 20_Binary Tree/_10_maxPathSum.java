@@ -19,7 +19,7 @@ public class _10_maxPathSum {
     public static int find(Node root) {
         if(root == null) return 0;
 
-        int left = Math.max(0, find(root.left));
+        int left = Math.max(0, find(root.left)); //we are using math.max to avoid negative values, they will just lower the value so we dont need it
         int right = Math.max(0, find(root.right));
         sum = Math.max(sum, left + right + root.data);
         
