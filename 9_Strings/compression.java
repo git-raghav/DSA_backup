@@ -1,4 +1,4 @@
-public class compression {
+class compression {
     public static String compress(String str) {
         String nstr = "";
         for (int i = 0; i < str.length(); i++) {
